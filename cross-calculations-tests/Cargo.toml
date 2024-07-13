@@ -1,0 +1,8 @@
+[package]
+name = "cross-calculations-tests"
+version = "0.1.0"
+edition = "2021"
+
+[dependencies]
+cross-calculations-core = {path = "../cross-calculations-core"}
+rust-extensions = { tag = "0.1.4", git = "https://github.com/MyJetTools/rust-extensions.git" }

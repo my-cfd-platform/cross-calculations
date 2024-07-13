@@ -1,0 +1,4 @@
+[workspace]
+members = [
+    "cross-calculations-core", "cross-calculations-tests",
+]
