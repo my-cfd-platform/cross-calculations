@@ -16,14 +16,23 @@ impl CrossCalculationsCrossPairsMatrix {
     pub fn new(
         requested_crosses: &[(&str, &str)],
         instruments: &[&impl CrossCalculationsSourceInstrument],
-    ) -> Result<Self, CrossCalculationsError> {
+    ) -> Result<Self, Vec<CrossCalculationsError>> {
         let mut result = HashMap::new();
 
-        for (base, quote) in requested_crosses {
-            let cross = find_cross_pair(base, quote, instruments)?;
+        let mut errors = vec![];
 
-            let base_map = result.entry(cross.base.clone()).or_insert(HashMap::new());
-            base_map.entry(cross.quote.clone()).or_insert(cross);
+        for (base, quote) in requested_crosses {
+            match find_cross_pair(base, quote, instruments) {
+                Ok(cross) => {
+                    let base_map = result.entry(cross.base.clone()).or_insert(HashMap::new());
+                    base_map.entry(cross.quote.clone()).or_insert(cross);
+                }
+                Err(err) => errors.push(err),
+            }
+        }
+
+        if !errors.is_empty() {
+            return Err(errors);
         }
 
         Ok(Self { pairs: result })
