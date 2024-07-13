@@ -15,7 +15,7 @@ pub struct CrossCalculationsCrossPairsMatrix {
 impl CrossCalculationsCrossPairsMatrix {
     pub fn new(
         requested_crosses: &[(&str, &str)],
-        instruments: &[impl CrossCalculationsSourceInstrument],
+        instruments: &[&impl CrossCalculationsSourceInstrument],
     ) -> Result<Self, CrossCalculationsError> {
         let mut result = HashMap::new();
 
@@ -37,7 +37,7 @@ impl CrossCalculationsCrossPairsMatrix {
 fn find_cross_pair(
     base: &str,
     quote: &str,
-    instruments: &[impl CrossCalculationsSourceInstrument],
+    instruments: &[&impl CrossCalculationsSourceInstrument],
 ) -> Result<CrossPair, CrossCalculationsError> {
     let base_contains_instruments = instruments
         .iter()

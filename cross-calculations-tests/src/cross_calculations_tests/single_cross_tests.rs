@@ -8,7 +8,7 @@ fn test_single_pair_cross_2() {
     let instruments = get_test_instruments2();
     let crosses = [("BTC", "ETH"), ("ETH", "BTC")];
 
-    let matrix = CrossCalculationsCrossPairsMatrix::new(&crosses, &instruments).unwrap();
+    let matrix = CrossCalculationsCrossPairsMatrix::new(&crosses, &instruments.iter().collect::<Vec<_>>()).unwrap();
 
     let first_cross = get_cross_rate("BTC", "ETH", &matrix, &bid_ask, true).unwrap();
     let second_cross = get_cross_rate("ETH", "BTC", &matrix, &bid_ask, true).unwrap();
@@ -26,7 +26,7 @@ fn test_single_pair_cross_3() {
     let instruments = get_test_instruments3();
     let crosses = [("BTC", "ETH"), ("ETH", "BTC")];
 
-    let matrix = CrossCalculationsCrossPairsMatrix::new(&crosses, &instruments).unwrap();
+    let matrix = CrossCalculationsCrossPairsMatrix::new(&crosses, &instruments.iter().collect::<Vec<_>>()).unwrap();
 
     let first_cross = get_cross_rate("BTC", "ETH", &matrix, &bid_ask, true).unwrap();
     let second_cross = get_cross_rate("ETH", "BTC", &matrix, &bid_ask, true).unwrap();
