@@ -1,0 +1,1 @@
+pub extern crate cross_calculations_core as core;

@@ -1,0 +1,7 @@
+[package]
+name = "cross-calculations"
+version = "0.1.0"
+edition = "2021"
+
+[dependencies]
+cross-calculations-core = {path = "../cross-calculations-core"}
