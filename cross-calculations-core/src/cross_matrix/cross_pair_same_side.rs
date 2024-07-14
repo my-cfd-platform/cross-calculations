@@ -5,6 +5,7 @@ use crate::{
 
 #[derive(Debug, Clone)]
 pub struct CrossPairSameSideType {
+    pub left_side_match_asset: bool,
     pub left: InstrumentId,
     pub right: InstrumentId,
 }
@@ -32,11 +33,24 @@ impl CrossPairSameSideType {
 
         let date = left_bid_ask.get_date().max(right_bid_ask.get_date());
 
+        let (bid, ask) = match self.left_side_match_asset {
+            true => {
+                let bid = 1.0 / left_bid_ask.get_ask() * right_bid_ask.get_bid();
+                let ask = 1.0 / left_bid_ask.get_bid() * right_bid_ask.get_ask();
+
+                (bid, ask)
+            }
+            false => (
+                left_bid_ask.get_bid() / right_bid_ask.get_ask(),
+                left_bid_ask.get_ask() / right_bid_ask.get_bid(),
+            ),
+        };
+
         Ok(CrossCalculationsCrossRate {
             base: base.to_string(),
             quote: quote.to_string(),
-            bid: left_bid_ask.get_bid() / right_bid_ask.get_ask(),
-            ask: left_bid_ask.get_ask() / right_bid_ask.get_bid(),
+            bid,
+            ask,
             source,
             date,
         })

@@ -127,3 +127,41 @@ pub fn get_test_instruments3() -> Vec<CrossCalculationsTestInstrument> {
         },
     ]
 }
+
+
+pub fn get_test_data_4() -> Vec<CrossCalculationTestBidAsk> {
+    vec![
+        CrossCalculationTestBidAsk {
+            id: "EURTRY".to_string(),
+            base: "EUR".to_string(),
+            quote: "TRY".to_string(),
+            bid: 35.96553,
+            ask: 36.05,
+            date: DateTimeAsMicroseconds::from(123456_i64),
+        },
+        CrossCalculationTestBidAsk {
+            id: "EURGBP".to_string(),
+            base: "EUR".to_string(),
+            quote: "GBP".to_string(),
+            bid: 0.83962,
+            ask: 0.83992,
+            date: DateTimeAsMicroseconds::from(123457_i64),
+        },
+    ]
+}
+
+
+pub fn get_test_instruments4() -> Vec<CrossCalculationsTestInstrument> {
+    vec![
+        CrossCalculationsTestInstrument {
+            id: "EURTRY".to_string(),
+            base: "EUR".to_string(),
+            quote: "TRY".to_string(),
+        },
+        CrossCalculationsTestInstrument {
+            id: "EURGBP".to_string(),
+            base: "EUR".to_string(),
+            quote: "GBP".to_string(),
+        },
+    ]
+}

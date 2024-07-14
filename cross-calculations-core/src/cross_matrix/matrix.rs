@@ -76,6 +76,7 @@ fn find_cross_pair(
                     true => CrossPairType::CrossPairSameSideType(CrossPairSameSideType {
                         left: InstrumentId(left.get_id().to_string()),
                         right: InstrumentId(right.get_id().to_string()),
+                        left_side_match_asset: left.get_base() == right.get_base(),
                     }),
                     false => CrossPairType::DiffSide(CrossPairDiffSideType {
                         left: CrossPairDiffSideInnerType::Direct(InstrumentId(

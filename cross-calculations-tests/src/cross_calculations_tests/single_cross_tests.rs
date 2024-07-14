@@ -37,3 +37,20 @@ fn test_single_pair_cross_3() {
     assert_eq!(format!("{:.1}", second_cross.bid), "5.0");
     assert_eq!(format!("{:.1}", second_cross.ask), "5.0");
 }
+
+
+#[test]
+fn test_single_pair_cross_4() {
+    let bid_ask = CrossCalculationsCache::new(get_test_data_4());
+    let instruments = get_test_instruments4();
+    let crosses = [("TRY", "GBP"), ("GBP", "TRY")];
+
+    let matrix = CrossCalculationsCrossPairsMatrix::new(&crosses, &instruments.iter().collect::<Vec<_>>()).unwrap();
+
+    println!("matrix: {:#?}", matrix);
+    let first_cross = get_cross_rate("TRY", "GBP", &matrix, &bid_ask, true).unwrap();
+    let second_cross = get_cross_rate("GBP", "TRY", &matrix, &bid_ask, true).unwrap();
+
+    println!("first_cross: {:#?}", first_cross);
+    println!("second_cross: {:#?}", second_cross);
+}
