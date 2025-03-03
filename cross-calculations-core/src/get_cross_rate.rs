@@ -1,4 +1,4 @@
-use rust_extensions::date_time::DateTimeAsMicroseconds;
+use chrono::{DateTime, Utc};
 
 use crate::{
     CrossCalculationsCrossPairsMatrix, CrossCalculationsError,
@@ -11,7 +11,7 @@ pub struct CrossCalculationsCrossRate {
     pub quote: String,
     pub bid: f64,
     pub ask: f64,
-    pub date: DateTimeAsMicroseconds,
+    pub date: DateTime<Utc>,
     pub source: Option<(InstrumentId, InstrumentId)>,
 }
 

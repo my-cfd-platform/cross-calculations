@@ -1,13 +1,15 @@
 use std::collections::HashMap;
 
-use cross_calculations_core::{CrossCalculationsBidAsk, CrossCalculationsPriceSource, CrossCalculationsSourceInstrument};
-use rust_extensions::date_time::DateTimeAsMicroseconds;
+use chrono::{DateTime, Utc};
+use cross_calculations_core::{
+    CrossCalculationsBidAsk, CrossCalculationsPriceSource, CrossCalculationsSourceInstrument,
+};
 
 pub struct CrossCalculationTestBidAsk {
     pub id: String,
     pub bid: f64,
     pub ask: f64,
-    pub date: DateTimeAsMicroseconds,
+    pub date: DateTime<Utc>,
     pub base: String,
     pub quote: String,
 }
@@ -25,7 +27,7 @@ impl CrossCalculationsBidAsk for CrossCalculationTestBidAsk {
         self.ask
     }
 
-    fn get_date(&self) -> DateTimeAsMicroseconds {
+    fn get_date(&self) -> DateTime<Utc> {
         self.date
     }
 }
@@ -42,9 +44,7 @@ impl CrossCalculationsCache {
             result.insert(item.id.clone(), item);
         }
 
-        Self {
-            cache: result,
-        }
+        Self { cache: result }
     }
 }
 
@@ -57,13 +57,11 @@ impl CrossCalculationsPriceSource for CrossCalculationsCache {
     }
 }
 
-
-pub struct CrossCalculationsTestInstrument{
+pub struct CrossCalculationsTestInstrument {
     pub id: String,
     pub base: String,
     pub quote: String,
 }
-
 
 impl CrossCalculationsSourceInstrument for CrossCalculationsTestInstrument {
     fn get_id(&self) -> &str {

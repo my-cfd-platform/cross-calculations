@@ -1,4 +1,4 @@
-use rust_extensions::date_time::DateTimeAsMicroseconds;
+use chrono::{DateTime, Utc};
 
 use crate::{
     CrossCalculationsBidAsk, CrossCalculationsCrossRate, CrossCalculationsError,
@@ -15,7 +15,7 @@ impl CrossPairDiffSideInnerType {
     pub fn get_data(
         &self,
         price_src: &impl CrossCalculationsPriceSource,
-    ) -> Result<(f64, f64, DateTimeAsMicroseconds, InstrumentId), CrossCalculationsError> {
+    ) -> Result<(f64, f64, DateTime<Utc>, InstrumentId), CrossCalculationsError> {
         match self {
             CrossPairDiffSideInnerType::Direct(src) => {
                 let src_bid_ask = price_src.get_bid_ask(src).ok_or(

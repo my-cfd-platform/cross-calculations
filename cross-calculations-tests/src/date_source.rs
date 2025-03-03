@@ -1,4 +1,4 @@
-use rust_extensions::date_time::DateTimeAsMicroseconds;
+use chrono::Utc;
 
 use crate::{CrossCalculationTestBidAsk, CrossCalculationsTestInstrument};
 
@@ -10,7 +10,7 @@ pub fn get_test_data() -> Vec<CrossCalculationTestBidAsk> {
             quote: "USD".to_string(),
             bid: 1.1,
             ask: 1.2,
-            date: DateTimeAsMicroseconds::from(123456_i64),
+            date: Utc::now(),
         },
         CrossCalculationTestBidAsk {
             id: "USDJPY".to_string(),
@@ -18,7 +18,7 @@ pub fn get_test_data() -> Vec<CrossCalculationTestBidAsk> {
             quote: "JPY".to_string(),
             bid: 110.0,
             ask: 111.0,
-            date: DateTimeAsMicroseconds::from(123457_i64),
+            date: Utc::now(),
         },
         CrossCalculationTestBidAsk {
             id: "GBPUSD".to_string(),
@@ -26,7 +26,7 @@ pub fn get_test_data() -> Vec<CrossCalculationTestBidAsk> {
             quote: "USD".to_string(),
             bid: 1.3,
             ask: 1.4,
-            date: DateTimeAsMicroseconds::from(123458_i64),
+            date: Utc::now(),
         },
     ]
 }
@@ -60,7 +60,7 @@ pub fn get_test_data_2() -> Vec<CrossCalculationTestBidAsk> {
             quote: "USD".to_string(),
             bid: 100.0,
             ask: 100.0,
-            date: DateTimeAsMicroseconds::from(123456_i64),
+            date: Utc::now(),
         },
         CrossCalculationTestBidAsk {
             id: "ETHUSD".to_string(),
@@ -68,7 +68,7 @@ pub fn get_test_data_2() -> Vec<CrossCalculationTestBidAsk> {
             quote: "USD".to_string(),
             bid: 500.0,
             ask: 500.0,
-            date: DateTimeAsMicroseconds::from(123457_i64),
+            date: Utc::now(),
         },
     ]
 }
@@ -99,7 +99,7 @@ pub fn get_test_data_3() -> Vec<CrossCalculationTestBidAsk> {
             quote: "USD".to_string(),
             bid: 100.0,
             ask: 100.0,
-            date: DateTimeAsMicroseconds::from(123456_i64),
+            date: Utc::now(),
         },
         CrossCalculationTestBidAsk {
             id: "USDETH".to_string(),
@@ -107,7 +107,7 @@ pub fn get_test_data_3() -> Vec<CrossCalculationTestBidAsk> {
             quote: "ETH".to_string(),
             bid: 500.0,
             ask: 500.0,
-            date: DateTimeAsMicroseconds::from(123457_i64),
+            date: Utc::now(),
         },
     ]
 }
@@ -137,7 +137,7 @@ pub fn get_test_data_4() -> Vec<CrossCalculationTestBidAsk> {
             quote: "TRY".to_string(),
             bid: 35.96553,
             ask: 36.05,
-            date: DateTimeAsMicroseconds::from(123456_i64),
+            date: Utc::now(),
         },
         CrossCalculationTestBidAsk {
             id: "EURGBP".to_string(),
@@ -145,7 +145,7 @@ pub fn get_test_data_4() -> Vec<CrossCalculationTestBidAsk> {
             quote: "GBP".to_string(),
             bid: 0.83962,
             ask: 0.83992,
-            date: DateTimeAsMicroseconds::from(123457_i64),
+            date: Utc::now(),
         },
     ]
 }
