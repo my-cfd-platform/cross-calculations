@@ -16,7 +16,7 @@ impl CrossCalculationsCrossPairsMatrix {
     pub fn new(
         requested_crosses: &[(&str, &str)],
         instruments: &[&impl CrossCalculationsSourceInstrument],
-    ) -> Result<Self, Vec<CrossCalculationsError>> {
+    ) -> (Self, Vec<CrossCalculationsError>) {
         let mut result = HashMap::new();
 
         let mut errors = vec![];
@@ -31,11 +31,7 @@ impl CrossCalculationsCrossPairsMatrix {
             }
         }
 
-        if !errors.is_empty() {
-            return Err(errors);
-        }
-
-        Ok(Self { pairs: result })
+        (Self { pairs: result }, errors)
     }
 
     pub fn get_target_cross(&self, base: &str, quote: &str) -> Option<&CrossPair> {
