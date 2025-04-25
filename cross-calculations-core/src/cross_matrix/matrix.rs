@@ -7,7 +7,7 @@ use crate::{
 
 use super::cross_pair_diff_side::{CrossPairDiffSideInnerType, CrossPairDiffSideType};
 
-#[derive(Debug, Clone)]
+#[derive(Debug, Clone, Default)]
 pub struct CrossCalculationsCrossPairsMatrix {
     pub pairs: HashMap<String, HashMap<String, CrossPair>>,
 }
