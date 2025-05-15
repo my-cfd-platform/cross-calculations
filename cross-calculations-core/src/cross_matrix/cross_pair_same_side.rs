@@ -1,9 +1,11 @@
+use serde::{Deserialize, Serialize};
+
 use crate::{
     CrossCalculationsBidAsk, CrossCalculationsCrossRate, CrossCalculationsError,
     CrossCalculationsPriceSource, InstrumentId,
 };
 
-#[derive(Debug, Clone)]
+#[derive(Debug, Clone, Default, Serialize, Deserialize)]
 pub struct CrossPairSameSideType {
     pub left_side_match_asset: bool,
     pub left: InstrumentId,

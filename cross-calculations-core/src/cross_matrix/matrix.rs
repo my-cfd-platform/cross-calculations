@@ -1,5 +1,7 @@
 use std::collections::HashMap;
 
+use serde::{Deserialize, Serialize};
+
 use crate::{
     CrossCalculationsError, CrossCalculationsSourceInstrument, CrossPair, CrossPairSameSideType,
     CrossPairType, InstrumentId,
@@ -7,7 +9,7 @@ use crate::{
 
 use super::cross_pair_diff_side::{CrossPairDiffSideInnerType, CrossPairDiffSideType};
 
-#[derive(Debug, Clone, Default)]
+#[derive(Debug, Clone, Default, Serialize, Deserialize)]
 pub struct CrossCalculationsCrossPairsMatrix {
     pub pairs: HashMap<String, HashMap<String, CrossPair>>,
 }

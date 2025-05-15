@@ -1,11 +1,12 @@
 use chrono::{DateTime, Utc};
+use serde::{Deserialize, Serialize};
 
 use crate::{
     CrossCalculationsBidAsk, CrossCalculationsCrossRate, CrossCalculationsError,
     CrossCalculationsPriceSource, InstrumentId,
 };
 
-#[derive(Debug, Clone)]
+#[derive(Debug, Clone, Serialize, Deserialize)]
 pub enum CrossPairDiffSideInnerType {
     Direct(InstrumentId),
     Reversed(InstrumentId),
@@ -45,7 +46,7 @@ impl CrossPairDiffSideInnerType {
     }
 }
 
-#[derive(Debug, Clone)]
+#[derive(Debug, Clone, Serialize, Deserialize)]
 pub struct CrossPairDiffSideType {
     pub left: CrossPairDiffSideInnerType,
     pub right: CrossPairDiffSideInnerType,

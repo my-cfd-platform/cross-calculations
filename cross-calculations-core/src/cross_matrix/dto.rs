@@ -4,7 +4,7 @@ use crate::CrossPairSameSideType;
 
 use super::cross_pair_diff_side::CrossPairDiffSideType;
 
-#[derive(Debug, Clone, Serialize, Deserialize)]
+#[derive(Debug, Clone, Default, Serialize, Deserialize)]
 pub struct InstrumentId(pub String);
 
 impl InstrumentId {
@@ -13,14 +13,14 @@ impl InstrumentId {
     }
 }
 
-#[derive(Debug, Clone)]
+#[derive(Debug, Clone, Serialize, Deserialize)]
 pub struct CrossPair {
     pub base: String,
     pub quote: String,
     pub _type: CrossPairType,
 }
 
-#[derive(Debug, Clone)]
+#[derive(Debug, Clone, Serialize, Deserialize)]
 pub enum CrossPairType {
     CrossPairSameSideType(CrossPairSameSideType),
     DiffSide(CrossPairDiffSideType),
