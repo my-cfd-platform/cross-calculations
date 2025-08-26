@@ -10,5 +10,5 @@ pub trait CrossCalculationsBidAsk{
 }
 
 pub trait CrossCalculationsPriceSource {
-    fn get_bid_ask(&self, id: &InstrumentId) -> Option<&impl CrossCalculationsBidAsk>;
+    fn get_bid_ask(&self, id: &InstrumentId) -> Option<impl CrossCalculationsBidAsk>;
 }
